@@ -23,4 +23,24 @@ class CustomerController extends AbstractController
             'customers' => $customers
         ]);
     }
+    #[Route('/customer/nouveau', name: 'customer.new')]
+    public function new( EntityManagerInterface $manager, Request $request): Response
+    {
+       $customer = new Customer();
+       $form = $this->createForm(CustomerType::class, $customer);
+       $form->handleRequest($request);
+
+       if($form->isSubmitted() && $form->isValid())
+       {
+            $customer = $form->getData();
+
+            $manager->persist($customer);
+            $manager->flush();
+
+            return $this->redirectToRoute('customer.index');
+       }
+        return $this->render('customer/new.html.twig', [
+            'form' => $form->createView()
+        ]);
+}
 }
