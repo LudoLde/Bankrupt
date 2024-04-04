@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
+use \App\Repository\CustomerRepository;
+use App\Form\CustomerType;
+use App\Entity\Customer;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use \Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Repository\CustomerRepository;
-use Knp\Component\Pager\PaginatorInterface;
 
 class CustomerController extends AbstractController
 {
@@ -23,7 +27,8 @@ class CustomerController extends AbstractController
             'customers' => $customers
         ]);
     }
-    #[Route('/customer/nouveau', name: 'customer.new')]
+
+    #[Route('/customer/new', name: 'customer.new')]
     public function new( EntityManagerInterface $manager, Request $request): Response
     {
        $customer = new Customer();
@@ -42,5 +47,5 @@ class CustomerController extends AbstractController
         return $this->render('customer/new.html.twig', [
             'form' => $form->createView()
         ]);
-}
+    }
 }
