@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CustomerController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Âge</th>
+      <th scope="col">Country</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for customer in customers %}
+    <tr class="table-primary">
+      <td>{{customer.id}}</td>
+      <td>{{customer.gender}}</td>
+      <td>{{customer.firstName}}</td>
+      <td>{{customer.lastName}}</td>
+      <td>{{customer.age}}</td>
+      <td>{{customer.country}}</td>
+    </tr>
+   {% endfor %} 
+  </tbody>
+</table>
+<div class="navigation">
+    {{ knp_pagination_render(customers) }}
+</div>
+</div>
+{% endblock %}

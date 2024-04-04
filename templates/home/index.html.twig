@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('success') %}
+    <div class="flash-notice alert">
+        {{ message }}
+    </div>
+{% endfor %}
+    This friendly message is coming from:
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SecurityController-login{% endblock %}
+
+{% block body %}
+    <form action="{{ path('security.login') }}" method="post" class="container">
+        <div>
+            <label for="username" class="form-label mt-4">Email address</label>
+            <input type="email" class="form-control" id="username" placeholder="Enter email" name="_username">
+        </div>
+        <div>
+            <label for="password" class="form-label mt-4">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" name="_password">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+        </div>
+            <button type="submit" class="btn btn-primary mt-4">Connectez-vous !</button>
+    </form>
+    
+{% endblock %}
