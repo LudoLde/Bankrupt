@@ -1,0 +1,29 @@
+{% extends ('base.html.twig')%}
+
+{% block body %}
+    {{ form_start(form) }}
+    
+
+    {{ form_label(form.gender) }}
+    {{ form_errors(form.gender) }}
+    {{ form_widget(form.gender) }}
+
+    {{ form_label(form.lastName) }}
+    {{ form_errors(form.lastName) }}
+    {{ form_widget(form.lastName) }}
+
+    {{ form_label(form.firstName) }}
+    {{ form_errors(form.firstName) }}
+    {{ form_widget(form.firstName) }}
+
+    {{ form_label(form.age) }}
+    {{ form_errors(form.age) }}
+    {{ form_widget(form.age) }}
+
+    {{ form_label(form.country) }}
+    {{ form_errors(form.country) }}
+    {{ form_widget(form.country) }}
+
+    {{ form_row(form.submit) }}
+{{ form_end(form) }}
+{% endblock %}
